@@ -1,0 +1,60 @@
+SIGNED AND UNSIGNED NUMBERS
+
+BINARY NUMBERS
+decimals-- base 10
+binary-- base 2
+
+DOUBLE WORDS
+we number the bits 0,1,2,3,... from right to left in a double word 
+MSB, LSB -- most/least signifigant bit
+doublewords are drawn horizontally and vertically, leftmost and righmost would be unclear when reffering to digits
+
+HEXADECIMAL NOTATION
+hexadecimal-- base 16
+0-F range
+1-9
+A-F (10-16)
+4 bits = "nibble"
+a nibble is half a byte ;)
+a nibble corresponds to one hex value
+
+OVERFLOW
+we have a limited amount of space to hold binary digits
+if the number that is the proper result of an arithmentic operation cannot be represented by those rightmost hardware bits, overflow is said to have occured
+it is up to the programming language, the OS and the program to determine what to do if overflow occurs
+
+SIGNED BINARY NUMBERS
+positive numbers v negative values
+signed binary numbers allows us to have negative values in binary
+we use the msb to denote the sign of a number (+/-)
+
+ONES COMPLIMENT
+the next step from signed magnitude
+MSB denotes the sign of the number
+for negative numbers we invert the bits from what they would normally be
+1's compliment still resullts in 2 values that reepresent 0 (0000 0000 = 0) and (1111 1111 = -0)
+advantage-- we may do basic arithmetic in a similar fashion to that for unsigned binary numbers
+
+2's COMPLIMENT
+leading 1's means negative and leading 0's mean positive
+answers the question of trying to subtract a larger number from a smaller one
+
+REPRESENTING INSTRUCTIONS
+machine instruction is composed of feilds, each filed having several bites
+a machine instruction is composed of fields, each filed having several bits
+
+LEGv8 FIELDS
+opcode - basic operations of the instructions (11 BITS)
+Rm - the second register source operand (5 BITS)
+shamt - shift amount (6 BITS)
+Rn - the first register source operand (5 BITS)
+Rd - the register destination operand, it gets the result of the operand (5 BITS)
+
+LIMITATIONS OF THE INSTRUCTION FORMAT
+a problem occurs when an instruction needs longer fileds
+
+MULTIPLE FORMATS
+this conflict leads us to the final hardware design principles; good design demands good comprimise
+
+DTYPE INSTRUCTIONS
+

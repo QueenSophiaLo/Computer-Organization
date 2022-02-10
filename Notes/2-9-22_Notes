@@ -1,0 +1,44 @@
+XZR -zero register
+
+ADDI X10,XZR,#4 // add immediate, (0+4 = X10) -- this is a "move operation" which is a psuedo instruction
+
+link register X30
+
+ALU	registers	memory		instructions memory (basically each line of code and it stores the instructions to go through them)
+	64 bits		8 bits		8 bits
+
+long long int = signed 64 bit integer type
+
+
+
+
+
+EXAMPLE -- save the registers used by the procedure (X19. X9, and X10). Push the old values onto the stack by creating space for three doublewords (24 bytes) on the stack and then store them
+NOTE**** we push 3 doublewords onto the stack becuase we need to preserve what was in those registers for the function call... we also need three registers for performing the function calculation
+
+C CODE
+long long int leaf_example (long long int g, long long int h, long long int i, long long int j) {
+	long long int f;
+
+	f = (g+h) - (i+j);
+	return f;
+}
+
+ASSEMBLY CODE
+leaf_example:
+	SUB SP, SP #24		// adjust stack to make room for three items (SP = stack pointer)
+	STUR X10, [SP,#16]	// save register X10 for use afterwards
+	STUR X9, {SP,#8}	// save register X9 for use afterwards
+	STUR X19,{SP,#0}	// save register X19 for use afterwards
+	ADD X9,X0,X1		// register X9 contains g+h
+	ADD X10,X2,X3		// register 
+	SUB X19,X9,X10		//
+	ADD X0,X19,XZR		// returns f (x0 = x19 +0)
+	LDUE X19,
+FIXME GO BACK THROUGH NOTES
+	BR LR			// branch back to calling routine
+
+NESTED PROCEDURES
+procedures that do not call others are leaf procedures
+not all procedures are leaf procedures
+`

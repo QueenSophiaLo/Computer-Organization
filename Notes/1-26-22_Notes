@@ -1,0 +1,51 @@
+MEMORY OPERANDS
+-if we can't keep all the data in registers, we need other places to store memory
+-we will need to move data from registers into memory
+
+MEMORY OPERANDS
+-memory also uses an addressing system to acces data
+-data transfer instructions- instructions that move data in and out of memory
+
+DATA TRANSFER INSTRUCTIONS
+load - copies data from memory into a register
+LDUR X9, [X22, #3]
+operation, resgister to be loaded, register, a constant used to access memory
+
+EXAMPLE
+// temporary register X9 gets A[8]
+LDUR X9, [X22,#8}	8+5000
+
+// g = h + A[8]
+Add X20, X21, X9	32+25
+
+X20 60 g
+X21 35 h
+(go back into slides and copy the memory stuff)
+
+BYTE ADDRESSING
+-unlike the register value, memory is typically always byte addressed
+-LEGv8 addresses each byte, doubleword addresses are multiples of 8 (there are 8 bytes in adoubleword)
+-the first double word consists of 8 bytes consisting of addresses with multiples of 1 (0, 1, 2, 3, 4, 5, 6, 7)
+-doubleword = multiples of 8 (0, 8, 16, 24...)
+- 8bits x 8locations = 64 bits
+
+"ENDIANNESS"
+Little-endian big-endian
+
+STORE INSTRUCTIONS
+complimentary to load instruction (copies data from register to memory)
+
+STUR X9, [X22, #96]
+operation name, register to be stored, register, a constant
+
+EXAMPLE
+LDUR X9, [X22, #64]	// temporary reg X9 gets A[8]
+ADD X9, X21, X9		// temporary re X9 gets h + A[8]
+STUR X9, [X22, #96]	// stores h + A[8] back into A[12]
+
+CONSTANT/IMMEDIATE OPERANDS
+includes a constant directly in the instruction itself
+add immediate
+
+ADDI X22, X22, #4
+including constants inside airhtmetic instructions, operations are much faster than if the constants were loaded from memory

@@ -1,0 +1,56 @@
+COMPUTER ORGANIZATION NOTES (WEEK 3)
+1-24-2022 (Monday)
+
+Chapter 2
+
+AGENDA
+instruction sets
+operations of computer hardware
+operands of computer hardware
+
+INTRO
+instructions - the words of a computer's language
+instruction set - the computer's vocabulary
+computer languages are similar to each other (easy to pick up on other languages once you learn the others)
+
+THE STORED PROGRAM CONCEPT
+the idea that instructions and data of many types can be stored in memory as numbers
+the "birth" of software
+electronically stored instructions are easy to change leading to the stored program computer (each command/each line of code is stored in memory)
+
+"Manchester Baby" video on slides
+
+ARMv8 and LEG v8
+the chosen instruction set is ARMv8
+we will be using a subset of ARMv8 instructions (LEGv8 which is intended as a pun)
+	LEG: Lessen Extrinsic Garrulity
+
+OPERATIONS OF COMPUTER HARDWARE
+
+ARITHMETIC OPERATIONS
+ADD a,b,c
+instructs a computer to add variables stored in memory location b and c and put that sum in memory location a
+arithmetic instructions perform only one operation and must always have exactly three variables
+SUB a,b,c
+ADD and SUB are the instructions and a,b,c are operands
+Simplicity favors regularity- one of the first  of three underlying principles of hardware design
+hardware for a variable number of operands is harder than one for a set number of operands
+
+LEGv8 OPERANDS
+operands of arithmetic instructios must be from a limited number of special locations built directly in hardware called registers
+LEGv8 registers are 64 bits
+word: natural unit of access in a computer, usually a group of 32 bits (now it has become a less specific bit definition)
+registers are primitives used in hardware design that are also visible to the programmer when the computer is completed
+
+REGISTER PROS AND CONS
+limited number of registers (typically 32 on current computers like LEGv)
+This is becuase of the 2nd design principle of hardware technology: Smaller is better
+
+REGISTERS IN MEMORY HIERARCHY
+(picture in notes)
+
+REGISTER NAMES
+LEGv8 convention is X#
+Ex: X0...X30, XZR (Register XZR is always equal to zero)
+
+

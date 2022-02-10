@@ -1,0 +1,47 @@
+PSUEDO C++ CODE
+while (X3 == X4) {
+	X3 = X3 << 1;
+}
+
+ASSEMBLY
+loop: SUB X9, X3, X4	// X9 = X3 - X4
+	CBNZ X9, Exit	// Conditional branch if not zero (Seeing if X3==X4, if it is... X9 will be zero)
+	LSL X3, X3, #1	// Logical shift left, the thing you want shifted, how much you want it shifted by
+	B Loop		// Branch back to the loop
+Exit:			// Shows where the end of the loop should be
+
+
+C++ code gets compiled (compiler) into assembly (assembler/linker) and it produces the machine code (1s and 0s)
+
+ANOTHER EXAMPLE
+while (save[i] == k)
+	i += 1;
+
+Loop: 	LSL X10, X22, #3
+	ADD X10, X19, X25
+	LDUR X9 [X19, #0]
+	SUB X11, X9, X24
+	CBNZ X11, Exit
+	ADDI X22, X22, #1
+	B Loop
+Exit:
+
+TESTING FOR EQALITY AND INEQUALITY
+(refer to slides)
+
+XZR
+
+SETTING CODES
+condition codes, if many instructions always set them, it creates dependancies that make it difficult for pipelined execution
+ADD ADDI AND ANDI SUB SUBI
+append an S to the end if you want to set conidtion codes (ADDS ADDIS ANDS ANDIS SUBS SUBIS) "add and set flags" etc...
+
+CASE AND SWITCH STATEMENT
+case/switch statement allows the programmer to select one of many alternatives depending on a single value
+the simplest way to implement witch is via a sequence of conditional tests turning the switch statement into a chain of if-then-else statements
+branch address table, branch table -- options encoded as a table of addresses of alternative instruction sequences and the program only needs to insex into the table and branch to the appropriate sequence
+BR -- branch register instruction (an unconditional branch to the address specified on a register)
+
+SUUPORTING PROCEDURES IN COMPUTER HARDWARE ( for next lecture :)
+
+

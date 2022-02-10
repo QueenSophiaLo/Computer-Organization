@@ -1,0 +1,36 @@
+SUPPORTING PROCEDURES IN COMPUTER HARDWARE
+
+PROCEDURES
+-a stored subroutine that performs a specific task based on the parameters with which it is provided
+-one way to implement abstraction in software
+-the result of Functions compiled from languages like C++
+
+EXECUTING PROCEDURES
+1) put paramteres in a place where the procedure can access them
+2) transfer control to the procedure
+3) aquire the storage resources needed for the procedure
+4) perform the desired task
+5) put the result value in a place where the calling program can access it
+6) return control to the point of origin, since a procedure can be called from several points in a program
+
+PROCEDURE REGISTERS
+-Registers X0-X7: 8 parameter registers in which to pass paramters or return values
+-register LR (X30): one return address register to return to the point of origin
+-LR (Link Register) - special instruction for using LR (branch and link)
+-branch and link instruction- an instruction that branches to an address and simultaneously saves the address of the folliwing instruction in a register (LR or X30 in LEGv8_
+-the address saved in LR is known as the return address
+
+PROGRAM COUNTER
+-holds the address of the current instruction being executed
+
+THE STACK POINTER (SP)
+-which is just one of the 32 registers, is adjusted by one doubleword for each register that is saved or restored
+-a stack needs a pointer to the most recently allocated address in the stack to show where the next procedures should place the registers to be spilled or where old register values are stored
+-stack=last in first out que... the ideal data structure for spilling registers
+-stacks gorw from higher to lower addresses (subtracting from the stack pointer, adding to the stack pointer shrinks the stack-- popping values off the stack
+
+psuedo C code to LEGv8
+leaf_example
+long long int f;
+f=(g+h)-(i+j);
+return f;

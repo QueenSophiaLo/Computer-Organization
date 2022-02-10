@@ -1,0 +1,29 @@
+LOGICAL OPERATIONS
+
+shift left	LSL (logical shift left)
+shift right	LSR (logical shift right)
+LSL X11,X19,#4 // reg X11 = reg X19 << 4 bits
+R-type instruction format
+
+bitwise AND	leaves a 1 in the result only if both bits of the operand are 1
+AND X9, X10, X11 // reg X9 = reg X10 & reg X11
+
+bitwise OR	 places a 1 as the result if either operand bit is a 1
+ORR X9, X10, X11 // reg X9 = reg X10 | reg X11
+
+bitwise NOT (EOR -- exclusive OR)
+EOR X9, X10, X12
+
+INSTRUCTIONS FOR MAKING DESCISIONS
+CBZ	conditional branch if zero
+CBZ register, L1 (this instruction means go to the statement labeled L1 if the value in the register equals zero
+
+CBNZ	conditional branch if not zero
+(look back at slides)
+
+LOOP
+
+Loop: CBNZ X0, Exit
+	# Loop body
+	B Loop
+Exit:
