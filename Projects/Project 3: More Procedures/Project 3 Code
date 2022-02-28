@@ -1,0 +1,78 @@
+int divide(int a, int b){
+    int r = 0;
+    while(a >= b){
+        a = a - b;
+        r++;
+    }
+    
+    return r;
+}
+
+int average(int a, int b, int c, int d, int e, int f, int g, int h){
+    int r = a + b + c + d + e + f + g + h;
+    int s = 8;
+    r = divide(r, s);
+    return r;
+}
+
+int main(){
+    int a = 5;
+    int b = 10;
+    int c = 8;
+    int d = 2;
+    int e = 5;
+    int f = 10;
+    int g = 7;
+    int h = 12;
+    
+    int i = average(a,b,c,d,e,f,g,h);
+    
+    return 0;
+}
+
+
+main:
+// set registers equal to given numbers
+    ADDI X0, XZR, #5
+    ADDI X1, XZR, #10
+    ADDI X2, XZR, #8
+    ADDI X3, XZR, #2
+    ADDI X4, XZR, #5
+    ADDI X5, XZR, #10
+    ADDI X6, XZR, #7
+    ADDI X7, XZR, #12
+ // Branch to "average" function
+    B average
+    LDUR X1,[X28,#80]       // X1 = "int i = average(a,b,c,d,e,f,g,h);"
+// return 0 and branch to end
+    ADD X0, XZR, XZR
+    B Exit
+average:
+// set X0 as the sum of all numbers
+// r = a + b + c + d + e + f + g + h
+    ADD X0, X0, X1      // where r = X0
+    ADD X0, X0, X2 
+    ADD X0, X0, X3 
+    ADD X0, X0, X4 
+    ADD X0, X0, X5
+    ADD X0, X0, X6
+    ADD X0, X0, X7
+    STUR X0,[X28,#64]       //  4064 = sum of #'s
+// Set register X1 to be "s = 8"
+    ADDI X1, XZR, #8
+    STUR X1,[X28,#72]       // 4072 = s = 8
+// branch to "divide" function
+    B divide
+    LDUR X1,[X28,#80]      // where X0 = r (return r)
+divide:
+// divide X0(r) and X1(s) 59/8
+// divide X0(a) and X1(b)
+    ADD X2, XZR, XZR       // zero out X2 (the counter)
+B divide_while         // branch to while loop
+divide_while:
+    SUB X0, X0, X1      // a = a - b
+    ADDI X2, X2, #1     // increment counter
+    STUR X2,[X28,#80]   // store the counter value in memory location 4080
+    SUBS XZR, X0, X1
+    B.GE divide_while
+Exit:           // exit program
