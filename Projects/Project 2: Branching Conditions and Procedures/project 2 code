@@ -1,0 +1,22 @@
+// X28 set to 4000
+// X30 set to 0
+main:
+   ADDI X1, XZR, #5		// multiplicand (j, a)
+   ADDI X2, XZR, #3		// multiplier (k, b)
+   STUR X1, [X28, #0]
+   STUR X2, [X28, #8]
+BL multiply			// branch to multiply function
+   ADDI X0, XZR, #0		// return 0
+   B Exit			// branch to end
+multiply:
+   ADD X3, XZR, XZR		// initialize counter X3 with 0 (i)
+   ADD X4, XZR, XZR		// initialize sum placeholder X4 with 0 (r)
+multiply_while:
+   ADD X4, X4, X1		// increment sum placeholder by multiplicand (r = r + a)
+   ADDI X3, X3, #1		// increment counter X3 by 1 (++i)
+   STUR X3, [X28, #16]
+   STUR X4, [X28, #24]
+   SUBI X28, X28, #32
+   SUBS XZR, X3, X2		// multiplier minus counter to set conditional bit
+B.LT multiply_while		// while loop with condition i < b
+Exit:				// exit program
